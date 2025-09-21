@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon Cyber Blog</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #0d0d26;
+      color: #fff;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #ff5e62, #8a2be2);
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .hero h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+    .hero p {
+      margin: 10px 0 20px;
+      font-size: 16px;
+      color: #f1f1f1;
+    }
+    .hero button {
+      background: #000;
+      color: #fff;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    .hero button:hover {
+      background: #222;
+    }
+
+    /* Tabs */
+    .tabs {
+      background: #111133;
+      padding: 10px;
+      display: flex;
+      justify-content: flex-start;
+      gap: 15px;
+      border-bottom: 1px solid #333;
+    }
+    .tabs button {
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      font-size: 14px;
+      padding: 8px 12px;
+    }
+    .tabs button:hover {
+      background: #1a1a40;
+      border-radius: 5px;
+    }
+
+    /* Search */
+    .search {
+      background: #111133;
+      padding: 10px;
+      text-align: center;
+    }
+    .search input {
+      width: 60%;
+      padding: 8px;
+      border: none;
+      border-radius: 5px;
+      background: #1a1a40;
+      color: #fff;
+    }
+
+    /* Posts Grid */
+    .posts {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+    .post-card {
+      background: #1a1a40;
+      padding: 15px;
+      border-radius: 10px;
+      width: 280px;
+      box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+    }
+    .post-card h2 {
+      font-size: 18px;
+      margin: 0 0 10px;
+    }
+    .post-card p {
+      font-size: 14px;
+      color: #ccc;
+      margin: 0 0 15px;
+    }
+    .post-card .stats {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #aaa;
+    }
+    .post-card .stats span {
+      cursor: pointer;
+    }
+    .post-card .stats span:hover {
+      color: #fff;
+    }
+
+    /* Footer */
+    .footer {
+      background: #0d0d26;
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      border-top: 1px solid #333;
+    }
+    .footer a {
+      color: #ff5e62;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    .social-icons {
+      margin-top: 10px;
+    }
+    .social-icons a {
+      color: #fff;
+      margin: 0 5px;
+      font-size: 18px;
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #1a1a40;
+      padding: 20px;
+      border-radius: 10px;
+      width: 400px;
+      box-shadow: 0 0 20px #8a2be2;
+    }
+    .modal-content h2 {
+      margin-top: 0;
+    }
+    .modal-content input,
+    .modal-content textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      background: #0d0d26;
+      color: #fff;
+    }
+    .modal-content textarea {
+      resize: none;
+      height: 100px;
+    }
+    .modal-content button {
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 5px;
+    }
+    .modal-content .save {
+      background: #8a2be2;
+      color: #fff;
+    }
+    .modal-content .cancel {
+      background: #333;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Neon Cyber Blog</h1>
+    <p>Unleash Your Stories in a Cyberpunk Universe</p>
+    <button id="openModal">Create Post</button>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button>All Posts</button>
+    <button>Sort by Likes</button>
+  </div>
+
+  <!-- Search -->
+  <div class="search">
+    <input type="text" placeholder="Search posts by title, content, or tags...">
+  </div>
+
+  <!-- Posts -->
+  <div class="posts" id="posts">
+    <div class="post-card">
+      <h2>Quick Motivation for Today</h2>
+      <p>Don't wait for the perfect moment. Take the moment and make it perfect! 😄</p>
+      <div class="stats">
+        <span>Comments (2)</span>
+        <span>Edit</span>
+        <span>Delete</span>
+      </div>
+    </div>
+    <div class="post-card">
+      <h2>AI is Changing the World</h2>
+      <p>Artificial Intelligence is everywhere - from healthcare and education to self-driving cars!</p>
+      <div class="stats">
+        <span>Comments (4)</span>
+        <span>Edit</span>
+        <span>Delete</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    © 2025 Neon Cyber Blog. All rights reserved.
+    <div class="social-icons">
+      <a href="#">🐦</a>
+      <a href="#">📷</a>
+      <a href="#">🔗</a>
+    </div>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="postModal">
+    <div class="modal-content">
+      <h2>New Post</h2>
+      <input type="text" id="postTitle" placeholder="Post Title">
+      <textarea id="postContent" placeholder="Write your post..."></textarea>
+      <input type="text" id="postTags" placeholder="Tags (comma-separated)">
+      <button class="cancel" id="closeModal">Cancel</button>
+      <button class="save" id="savePost">Save</button>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("postModal");
+    const openBtn = document.getElementById("openModal");
+    const closeBtn = document.getElementById("closeModal");
+    const saveBtn = document.getElementById("savePost");
+    const postsContainer = document.getElementById("posts");
+
+    openBtn.onclick = () => modal.style.display = "flex";
+    closeBtn.onclick = () => modal.style.display = "none";
+
+    saveBtn.onclick = () => {
+      const title = document.getElementById("postTitle").value;
+      const content = document.getElementById("postContent").value;
+      if (title && content) {
+        const newPost = document.createElement("div");
+        newPost.classList.add("post-card");
+        newPost.innerHTML = `
+          <h2>${title}</h2>
+          <p>${content}</p>
+          <div class="stats">
+            <span>Comments (0)</span>
+            <span>Edit</span>
+            <span>Delete</span>
+          </div>
+        `;
+        postsContainer.appendChild(newPost);
+        modal.style.display = "none";
+      }
+    };
+  </script>
+
+</body>
+</html>
